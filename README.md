@@ -12,9 +12,29 @@ Trên điện thoại và tablet dựng dọc, dashboard chuyển sang bố cụ
 
 Toàn bộ entity mặc định được lấy trực tiếp từ phần `substitutions` của YAML. Pi 3 chạy Nginx; Safari/Chromium kết nối trực tiếp tới Home Assistant bằng WebSocket. Không cần cài thêm gì trong Home Assistant hay HACS: dashboard là trang web riêng, không dùng card Lovelace.
 
-## Cập nhật bản đang chạy trên Pi 3
+## Cài hoặc cập nhật trên Pi 3
 
-Chép file ZIP mới vào thư mục home của Pi rồi chạy trong PuTTY:
+Cách nhanh nhất: SSH vào Pi (PuTTY hoặc `ssh pi@IP-CUA-PI3`) rồi chạy một trong hai lệnh dưới.
+
+Nếu Pi có `git`, cài lần đầu:
+
+```bash
+cd ~ && git clone https://github.com/haxeko/homeassistant-dashboard.git && cd homeassistant-dashboard && sudo bash install.sh
+```
+
+Cập nhật các lần sau:
+
+```bash
+cd ~/homeassistant-dashboard && git pull && sudo bash install.sh
+```
+
+Không dùng `git` (tải bản mới nhất của nhánh `main`):
+
+```bash
+cd ~ && mkdir -p homeassistant-dashboard && curl -fsSL https://codeload.github.com/haxeko/homeassistant-dashboard/tar.gz/refs/heads/main | tar -xz --strip-components=1 -C homeassistant-dashboard && cd homeassistant-dashboard && sudo bash install.sh
+```
+
+Hoặc chép file ZIP mới vào thư mục home của Pi rồi chạy trong PuTTY:
 
 ```bash
 cd ~
